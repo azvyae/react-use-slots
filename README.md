@@ -1,5 +1,7 @@
 # useComponentSlots - Web Component-style slots for React Components
 
+Improved unintended side effects when using SSR rendering
+
 ### This software was designed to save you development time and money
 Did it help? Consider donating some of your savings towards further enhancements to the software!
 
