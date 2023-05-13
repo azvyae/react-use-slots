@@ -1,6 +1,6 @@
 {
     "name": "react-webcomponent-slots",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Use slotted components in web-component style, inspired by starkraving/slotted-react-component with proper typescript and javascript declarations.",
     "main": "index.js",
     "directories": {

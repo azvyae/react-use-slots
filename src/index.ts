@@ -1,1 +1,2 @@
-declare module "useSlots";
+import useSlots from "./useSlots";
+export default useSlots;
