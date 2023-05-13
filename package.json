@@ -1,16 +1,14 @@
 {
     "name": "react-webcomponent-slots",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "Use slotted components in web-component style, inspired by starkraving/slotted-react-component with proper typescript and javascript declarations.",
-    "main": "index.js",
-    "directories": {
-        "test": "test"
-    },
+    "main": "useSlots.js",
     "files": [
-        "build"
+        "useSlots.js",
+        "useSlots.d.ts"
     ],
     "scripts": {
-        "test": "test",
+        "test": "echo \"Error: no test specified\" && exit 1",
         "build": "tsc"
     },
     "repository": {
@@ -22,19 +20,19 @@
         "javascript",
         "slot"
     ],
-    "author": "Azvya Erstevan I",
+    "author": "Mike Ritchie, Azvya Erstevan I",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/azvyae/react-webcomponent-slots/issues"
     },
     "homepage": "https://github.com/azvyae/react-webcomponent-slots#readme",
-    "dependencies": {
-        "@types/react": "^18.2.6",
-        "react": "^18.2.0"
-    },
+    "dependencies": {},
     "devDependencies": {
-        "typescript": "^5.0.4"
+        "typescript": "^5.0.4",
+        "@types/react": "^18.2.6",
+        "react": "^18.2.0",
+        "react-dom": "^18.2.0"
     },
     "type": "module",
-    "types": "build/index.d.ts"
+    "types": "useSlots.d.ts"
 }
