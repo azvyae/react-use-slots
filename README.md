@@ -1,13 +1,10 @@
-# useComponentSlots - Web Component-style slots for React Components
+# React WebComponent Slots - Web Component-style slots for React Components
 
-Improved unintended side effects when using SSR rendering
+Improved typescript and rationalized code for better usage for future development.
 
-### This software was designed to save you development time and money
-Did it help? Consider donating some of your savings towards further enhancements to the software!
+### Inspired by [starkraving/slotted-react-component](https://github.com/starkraving/slotted-react-component)
 
-[![patreon](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/bePatron?u=26073031)
-
-When searching for "React component slots" often you find articles that show something like this for syntax:
+This is only improved typescript highlighting and fixes some errors on modern React libraries.
 
 ```
 <MyComponent
@@ -28,27 +25,27 @@ In vanilla Javascript web components, however, the syntax is (to me) quite a bit
 </my-component>
 ```
 
-The `useComponentSlots` hook brings support for this style of syntax into your React components, making it extremely easy to not only
+The `useSlot` hook brings support for this style of syntax into your React components, making it extremely easy to not only
 set up a component that takes content in multiple locations in the template, but also to implement that component in your codebase.
 
 ## How to use
 Add the package to your React app:
 
 ```
-npm install use-componentslots
+npm install react-webcomponent-slots
 ```
 
 Add the hook to whatever component is going to use it:
 
 ```
-import useComponentSlots from 'use-componentslots';
+import useSlot from 'react-webcomponent-slots';
 ```
 
 Then, use the hook in your component to create a <Slot> component in your render function that will render your main component's children in named locations within the component template.
 
 ```
 const MyDialog = ({children}) => {
-  const [Slot] = useComponentSlots(children);
+  const [Slot] = useSlot(children);
 
   return (
     <dialog>
@@ -88,11 +85,11 @@ Now, in any Component that uses this slotted Component, you can put all the JSX 
 
 ### Conditional Rendering
 
-`useComponentSlots` includes a function you can use to test the existence of a named slot, which allows for conditional rendering:
+`useSlot` includes a function you can use to test the existence of a named slot, which allows for conditional rendering:
 
 ```
 const MyDialog = ({children}) => {
-  const [Slot, hasSlot] = useComponentSlots(children);
+  const [Slot, hasSlot] = useSlot(children);
 
   return (
     <dialog>
