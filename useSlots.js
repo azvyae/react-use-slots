@@ -2,15 +2,18 @@ import React from "react";
 const useSlots = (componentChildren) => {
     const slots = React.Children.toArray(componentChildren).reduce((collector, child) => {
         var _a;
-        if (typeof child === "string" || typeof child === "number") {
-            collector.general.push(React.createElement(child.toString()));
+        let slotName = "general";
+        if (React.isValidElement(child)) {
+            slotName = (_a = child.props.slot) !== null && _a !== void 0 ? _a : "general";
         }
-        else if (React.isValidElement(child)) {
-            const slotName = (_a = child.props.slot) !== null && _a !== void 0 ? _a : "general";
-            if (!collector[slotName]) {
-                collector[slotName] = [];
-            }
+        if (!collector[slotName]) {
+            collector[slotName] = [];
+        }
+        if (React.isValidElement(child)) {
             collector[slotName].push(child);
+        }
+        else {
+            child = React.createElement(child.toString());
         }
         return collector;
     }, { general: [] });
