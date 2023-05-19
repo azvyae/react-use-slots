@@ -32,13 +32,13 @@ set up a component that takes content in multiple locations in the template, but
 Add the package to your React app:
 
 ```
-npm install react-webcomponent-slots
+npm install react-use-slots
 ```
 
 Add the hook to whatever component is going to use it:
 
 ```
-import useSlot from 'react-webcomponent-slots';
+import useSlot from 'react-use-slots';
 ```
 
 Then, use the hook in your component to create a <Slot> component in your render function that will render your main component's children in named locations within the component template.

@@ -10,18 +10,19 @@ type HasSlotFunc = (slot: string) => boolean;
 
 const useSlots = (componentChildren: React.ReactNode): [Slot, HasSlotFunc] => {
   const slots = React.Children.toArray(componentChildren).reduce(
-    (collector: { [key: string]: React.ReactElement[] }, child) => {
-      if (!React.isValidElement(child)) {
-        return collector;
+    (collector: { [key: string]: React.ReactElement[]; }, child) => {
+
+      if (typeof child === "string" || typeof child === "number") {
+        collector.general.push(React.createElement(child.toString()));
+      } else if (React.isValidElement(child)) {
+        const slotName = child.props.slot ?? "general";
+
+        if (!collector[slotName]) {
+          collector[slotName] = [];
+        }
+
+        collector[slotName].push(child);
       }
-
-      const slotName = child.props.slot ?? "general";
-
-      if (!collector[slotName]) {
-        collector[slotName] = [];
-      }
-
-      collector[slotName].push(child);
 
       return collector;
     },
