@@ -1,6 +1,6 @@
 {
     "name": "react-use-slots",
-    "version": "0.1.6",
+    "version": "0.2.1",
     "description": "Use slotted components in web-component style, inspired by starkraving/slotted-react-component with proper typescript and javascript declarations.",
     "main": "useSlots.js",
     "files": [

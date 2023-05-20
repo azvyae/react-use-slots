@@ -1,12 +1,10 @@
 # React WebComponent Slots - Web Component-style slots for React Components
 
-Improved typescript and rationalized code for better usage for future development.
+Improved typescript and rationalized code for better usage for future development. Also fixes problem regarding state management that doesn't want to update the slotted component.
 
 ### Inspired by [starkraving/slotted-react-component](https://github.com/starkraving/slotted-react-component)
 
-This is only improved typescript highlighting and fixes some errors on modern React libraries.
-
-```
+```jsx
 <MyComponent
   title={<h1>My Component Title</h1>}
   description={<p>Some descriptive text</p>}
@@ -17,7 +15,7 @@ This is only improved typescript highlighting and fixes some errors on modern Re
 
 In vanilla Javascript web components, however, the syntax is (to me) quite a bit more readable:
 
-```
+```jsx
 <my-component>
   <h1 slot="title">My Component Title</h1>
   <p slot="description">Some descriptive text</p>
@@ -31,29 +29,29 @@ set up a component that takes content in multiple locations in the template, but
 ## How to use
 Add the package to your React app:
 
-```
+```bash
 npm install react-use-slots
 ```
 
 Add the hook to whatever component is going to use it:
 
-```
+```bash
 import useSlot from 'react-use-slots';
 ```
 
-Then, use the hook in your component to create a <Slot> component in your render function that will render your main component's children in named locations within the component template.
+Then, use the hook in your component by calling function `{slot()}` component in your render function that will render your main component's children in named locations within the component template.
 
-```
+```jsx
 const MyDialog = ({children}) => {
-  const [Slot] = useSlot(children);
+  const [slot] = useSlot(children);
 
   return (
     <dialog>
       <header>
-        <Slot name='title'>Default Dialog Title</Slot>
+        {slot('header', <>Default component</>)} // you could also pass plain text for default renders
       </header>
       <main>
-        <Slot></Slot>
+        {slot()}
       </main>
     </dialog>
   )
@@ -69,7 +67,7 @@ As you can see from the above example:
 
 Now, in any Component that uses this slotted Component, you can put all the JSX into the main children instead of having to use named props:
 
-```
+```jsx
 <MyDialog>
   <span slot='title'>This text will be shown instead of "Default Dialog Title"</span>
   <p>
@@ -87,22 +85,22 @@ Now, in any Component that uses this slotted Component, you can put all the JSX 
 
 `useSlot` includes a function you can use to test the existence of a named slot, which allows for conditional rendering:
 
-```
+```jsx
 const MyDialog = ({children}) => {
-  const [Slot, hasSlot] = useSlot(children);
+  const [slot, hasSlot] = useSlot(children);
 
   return (
     <dialog>
       <heading>
-        <Slot name='title'>Default Dialog Title</Slot>
+                {slot('header', <>Default component</>)}
       </heading>
       <main>
-        <Slot></Slot>
+        {slot()}
       </main>
       {
         // the footer won't render unless there's at least one child with a slot prop of 'buttons'
         hasSlot('buttons') && <footer>
-          <Slot name='buttons'></Slot>
+          {slot('buttons')}
         </footer>
       }
     </dialog>
@@ -111,5 +109,3 @@ const MyDialog = ({children}) => {
 
 export default MyDialog;
 ```
-
-You can see a demo online at https://starkraving.github.io/slotted-react-component/

@@ -1,37 +1,34 @@
-import React from "react";
+import React, { useMemo } from "react";
 
-interface Props {
-  name?: string;
-  children?: React.ReactNode;
-}
-
-type Slot = (props: Props) => React.ReactElement;
+type Slot = (name?: string, defaultChildren?: React.ReactNode) => React.ReactElement;
 type HasSlotFunc = (slot: string) => boolean;
 
 const useSlots = (componentChildren: React.ReactNode): [Slot, HasSlotFunc] => {
-  const slots = React.Children.toArray(componentChildren).reduce(
-    (collector: { [key: string]: React.ReactNode[]; }, child) => {
-      let slotName = "general";
+  const slots = useMemo(() => {
+    return React.Children.toArray(componentChildren).reduce(
+      (collector: { [key: string]: React.ReactNode[]; }, child) => {
+        let slotName = "general";
 
-      if (React.isValidElement(child)) {
-        slotName = child.props.slot || "general";
-      }
+        if (React.isValidElement(child)) {
+          slotName = child.props.slot || "general";
+        }
 
-      if (!collector[slotName]) {
-        collector[slotName] = [];
-      }
+        if (!collector[slotName]) {
+          collector[slotName] = [];
+        }
 
-      collector[slotName].push(child);
+        collector[slotName].push(child);
 
-      return collector;
-    },
-    { general: [] }
-  );
+        return collector;
+      },
+      { general: [] }
+    );
+  }, [componentChildren]);
 
-  const slot: Slot = ({ name = "", children: defaultChildren = [] }) => {
+  const slot: Slot = (name = "", defaultChildren = []) => {
     const children = !name ? slots.general : slots[name] ?? defaultChildren;
 
-    return React.createElement(React.Fragment, null, children);
+    return React.createElement(React.Fragment, {}, children);
   };
 
   const hasSlotFunction: HasSlotFunc = (slot: string) => {
