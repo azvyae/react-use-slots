@@ -1,38 +1,37 @@
 {
-    "name": "react-use-slots",
-    "version": "0.2.1",
-    "description": "Use slotted components in web-component style, inspired by starkraving/slotted-react-component with proper typescript and javascript declarations.",
-    "main": "useSlots.js",
-    "files": [
-        "useSlots.js",
-        "useSlots.d.ts"
-    ],
-    "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "tsc"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/azvyae/react-use-slots.git"
-    },
-    "keywords": [
-        "react",
-        "javascript",
-        "slot"
-    ],
-    "author": "Mike Ritchie, Azvya Erstevan I",
-    "license": "MIT",
-    "bugs": {
-        "url": "https://github.com/azvyae/react-use-slots/issues"
-    },
-    "homepage": "https://github.com/azvyae/react-use-slots#readme",
-    "dependencies": {},
-    "devDependencies": {
-        "typescript": "^5.0.4",
-        "@types/react": "^18.2.6",
-        "react": "^18.2.0",
-        "react-dom": "^18.2.0"
-    },
-    "type": "module",
-    "types": "useSlots.d.ts"
+  "name": "react-use-slots",
+  "version": "0.2.3",
+  "description": "Use slotted components in web-component style, inspired by starkraving/slotted-react-component with proper typescript and javascript declarations.",
+  "main": "useSlots.js",
+  "files": [
+    "useSlots.js",
+    "useSlots.d.ts"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/azvyae/react-use-slots.git"
+  },
+  "keywords": [
+    "react",
+    "javascript",
+    "slot"
+  ],
+  "author": "Mike Ritchie, Azvya Erstevan I",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/azvyae/react-use-slots/issues"
+  },
+  "homepage": "https://github.com/azvyae/react-use-slots#readme",
+  "devDependencies": {
+    "@types/react": "^18.2.6",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.0.4"
+  },
+  "type": "module",
+  "types": "useSlots.d.ts"
 }
