@@ -50,7 +50,8 @@ const MyDialog = ({children}) => {
   return (
     <dialog>
       <header>
-        {slot('header', <>Default component</>)} // you could also pass plain text for default renders
+        // you could also pass plain text for default renders
+        {slot('header', <>Default component</>)}
       </header>
       <main>
         {slot()}
@@ -71,12 +72,17 @@ Now, in any Component that uses this slotted Component, you can put all the JSX 
 
 ```jsx
 <MyDialog>
-  <span slot='title'>This text will be shown instead of "Default Dialog Title"</span>
+  <span slot='title'>
+    This text will be shown instead of "Default Dialog Title"
+  </span>
   <p>
-    Any children without a "slot" prop will automatically get collected into the default location
+    Any children without a "slot" prop will automatically 
+    get collected into the default location
   </p>
   <p>
-    You can even have multiple children, and they'll all get collected into the proper Slot for rendering
+    You can even have multiple children,
+    and they'll all get collected into
+    the proper Slot for rendering
   </p>
 </MyDialog>
 ```
@@ -100,7 +106,8 @@ const MyDialog = ({children}) => {
         {slot()}
       </main>
       {
-        // the footer won't render unless there's at least one child with a slot prop of 'buttons'
+        // the footer won't render unless there's at least
+        // one child with a slot prop of 'buttons'
         hasSlot('buttons') && <footer>
           {slot('buttons')}
         </footer>
