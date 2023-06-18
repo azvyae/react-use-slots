@@ -100,18 +100,17 @@ const MyDialog = ({children}) => {
   return (
     <dialog>
       <heading>
-                {slot('header', <>Default component</>)}
+        {slot('header', <>Default component</>)}
       </heading>
       <main>
         {slot()}
       </main>
-      {
-        // the footer won't render unless there's at least
-        // one child with a slot prop of 'buttons'
-        hasSlot('buttons') && <footer>
-          {slot('buttons')}
-        </footer>
-      }
+      // the footer won't render unless there's at least
+      // one child with a slot prop of 'buttons'
+      {hasSlot('buttons') && 
+       <footer>
+        {slot('buttons')}
+       </footer>}
     </dialog>
   )
 };
