@@ -1,8 +1,10 @@
-# React WebComponent Slots - Web Component-style slots for React Components
+# React WebComponent Slots - Web Component-Style slots for React Components
 
 Improved typescript and rationalized code for better usage for future development. Also fixes problem regarding state management that doesn't want to update the slotted component.
 
 ### Inspired by [starkraving/slotted-react-component](https://github.com/starkraving/slotted-react-component)
+
+This is typical way how to use "slot" in React, components passed as props and will act as "named slots" and it's children will act as the "default slot".
 
 ```jsx
 <MyComponent
@@ -13,7 +15,7 @@ Improved typescript and rationalized code for better usage for future developmen
 </MyComponent>
 ```
 
-In vanilla Javascript web components, however, the syntax is (to me) quite a bit more readable:
+However, I don't like mixing props (properties) that should define **how a component should be**, not **what the component will also render**. Component should be placed inside another component, not passed by props. So, this is how you use it.
 
 ```jsx
 <my-component>
@@ -30,7 +32,7 @@ set up a component that takes content in multiple locations in the template, but
 Add the package to your React app:
 
 ```bash
-npm install react-use-slots
+npm i react-use-slots
 ```
 
 Add the hook to whatever component is going to use it:
